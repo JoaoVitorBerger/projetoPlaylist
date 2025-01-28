@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1>Lista de Playlist</h1>
+    <% infos.forEach((playlist) => { %>
+        <h1><%=playlist.name%></h1>
+        <h1><%=playlist.tags%></h1>
+        <h1><%=playlist.music[0].title%></h1>
+        <h1><%=playlist.music[0].year%></h1>
+    <% } )%>
+</body>
+</html>
