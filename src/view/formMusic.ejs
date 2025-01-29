@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <h1><%=id%></h1>
+
+  <form action="/add/music/<%=id%>" method="POST">
+    <input type="text" placeholder="Informe o título da música" name="title" required>
+    <input type="date" placeholder="Informe o ano da música" name="year" required>
+    <input type="text" placeholder="Informe o nome do artista" name="artist" required>
+    <input type="text" placeholder="Informe o nome do álbum" name="album" required>
+    <button type="submit">Inserir Música</button>
+  </form>
+
+</body>
+</html>

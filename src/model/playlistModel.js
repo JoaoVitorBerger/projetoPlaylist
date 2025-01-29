@@ -3,7 +3,7 @@ let playlistList = [
         id: "1",
         name: "Pagode",
         tags:["Exaltassamba", "Zeca"],
-        music:[
+        musics:[
             {
                 id:"1",
                 title: "Caviar",
@@ -20,7 +20,7 @@ const playlistControler = {
         const playlist = {
             id: Date.now().toString(),
             name:name,
-            tags:[tags],
+            tags:[...tags],
             musics: []
         }
         playlistList.unshift(playlist)
@@ -28,12 +28,12 @@ const playlistControler = {
     insertMusic(idPlaylist,title, year, artist, album){
        let playListItem = playlistList.find(list=>list.id === idPlaylist)
        let findIndexPlaylist = playlistList.findIndex(list=>list.id === idPlaylist)
-       playListItem.music.push(music.create(title,year,artist,album))
+       playListItem.musics.push(music.create(title,year,artist,album))
        playlistList[findIndexPlaylist] = {...playlistList[findIndexPlaylist], ...playListItem}
     },
     deleteMusic(idPlaylist,idMusic){
        let playListItem = playlistList.find(list=>list.id === idPlaylist)
-       playListItem.music = playListItem.music.filter(list=>list.id !== idMusic)
+       playListItem.music = playListItem.musics.filter(list=>list.id !== idMusic)
        let findIndexPlaylist = playlistList.findIndex(list=>list.id === idPlaylist)
        playlistList[findIndexPlaylist] = {...playlistList[findIndexPlaylist], ...playListItem}
     },

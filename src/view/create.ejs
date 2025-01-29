@@ -9,10 +9,40 @@
 <body>
     <h1>Lista de Playlist</h1>
     <% infos.forEach((playlist) => { %>
-        <h1><%=playlist.name%></h1>
-        <h1><%=playlist.tags%></h1>
-        <h1><%=playlist.music[0].title%></h1>
-        <h1><%=playlist.music[0].year%></h1>
+        <a href="/see/about/playlist/<%=playlist.id%>">
+            <h1><%=playlist.name%></h1>
+        </a>
+        
     <% } )%>
+
+    <form action="/createPlaylist" method="POST">
+        <input type="text" name="name" placeholder="Informe a nova playlist" >
+        <input type="hidden" name="tags" value="" id="tags">
+        <button>Criar</button>
+    </form>
+    <div>
+        <input type="text" placeholder="Informe tags para essa playlist" id="tagFather">
+        <button id="adc">Adicionar</button>
+    </div>
+    <ul id="tagList">
+
+    </ul>
+
+    <script>
+        const inputFather = document.getElementById('tagFather')
+        const inputTags = document.getElementById('tags')
+        const tagList = document.getElementById('tagList')
+        let tagsArray = []
+        document.getElementById('adc').addEventListener('click', ()=>{
+            const li = document.createElement('li')
+            li.append(inputFather.value)
+            tagList.append(li)
+            tagsArray.push(inputFather.value)
+            inputTags.value = tagsArray
+            inputFather.value = ""
+        })
+        
+
+    </script>
 </body>
 </html>

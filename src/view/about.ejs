@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1><%=data.name%></h1>
+   <% data.musics.forEach((music)=>{ %>
+    <h3>
+      <%= music.title %>
+    </h3>
+   <% }) %>
+   <a href="/add/music/<%=data.id%>">
+    <button>Adicionar Música</button>
+   </a>
+</body>
+</html>
