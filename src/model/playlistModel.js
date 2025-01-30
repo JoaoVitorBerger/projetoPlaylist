@@ -17,7 +17,7 @@ const playlistControler = {
     },
     deleteMusic(idPlaylist,idMusic){
        let playListItem = playlistList.find(list=>list.id === idPlaylist)
-       playListItem.music = playListItem.musics.filter(list=>list.id !== idMusic)
+       playListItem.musics = playListItem.musics.filter(list=>list.id !== idMusic)
        let findIndexPlaylist = playlistList.findIndex(list=>list.id === idPlaylist)
        playlistList[findIndexPlaylist] = {...playlistList[findIndexPlaylist], ...playListItem}
     },
@@ -30,12 +30,13 @@ const playlistControler = {
         let playListItem = playlistList.find(list=>list.id === idPlaylist)
         playListItem.name = name
         playListItem.tags = tags
+        console.log(playListItem)
         let findIndexPlaylist = playlistList.findIndex(list=>list.id === idPlaylist)
         playlistList[findIndexPlaylist] = {...playlistList[findIndexPlaylist], ...playListItem}
     },
     getPlaylistById(id){
-        let findIndexPlaylist = playlistList.findIndex(list=>list.id === id)
-        return playlistList[findIndexPlaylist]
+        let findPlaylist = playlistList.find(list=> list.id === id)
+        return findPlaylist
     },
     getAllPlaylists(){
         return playlistList

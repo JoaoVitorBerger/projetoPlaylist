@@ -34,6 +34,26 @@ const controler = {
         console.log(id)
         playlistControler.deletePlaylist(id)
         res.redirect('/createPlaylist')
+    },
+    editPlaylist(req,res){
+        const id = req.params.id
+        const data = playlistControler.getPlaylistById(id)
+        console.log(data)
+        res.render('edit' , {data})
+    },
+    confirmEditPlaylist(req,res){
+        const {playlistName,...tags} = req.body
+        const idPlaylist = req.params.id
+        playlistControler.updatePlayst(idPlaylist,playlistName,Object.values(tags))
+        res.redirect('/createPlaylist')
+    },
+    deleteMusic(req,res){
+        const {idPlaylist, idMusic} = req.params
+        playlistControler.deleteMusic(idPlaylist, idMusic)
+        res.redirect('/createPlaylist')
+    },
+    renderHome(req,res){
+        res.render('home')
     }
 
 }
