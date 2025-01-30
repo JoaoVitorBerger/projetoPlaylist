@@ -28,6 +28,12 @@ const controler = {
     renderMusicForm(req,res){
         const id = req.params.id
         res.render('formMusic',{id})
+    },
+    deletePlaylist(req,res){
+        const id = req.params.id
+        console.log(id)
+        playlistControler.deletePlaylist(id)
+        res.redirect('/createPlaylist')
     }
 
 }

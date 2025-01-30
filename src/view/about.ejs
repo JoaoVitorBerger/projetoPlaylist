@@ -7,9 +7,23 @@
 </head>
 <body>
   <h1><%=data.name%></h1>
+  <button>Editar valores</button>
+  <div> 
+    <% data.tags.forEach((tag)=>{ %>
+      <h3>
+        <%= tag %>
+      </h3>
+      
+     <% }) %>
+  </div>
+   
    <% data.musics.forEach((music)=>{ %>
     <h3>
       <%= music.title %>
+      <form action="/delete/music/<%=music.id%>">
+        <button>Excluir</button>
+      </form>
+      
     </h3>
    <% }) %>
    <a href="/add/music/<%=data.id%>">

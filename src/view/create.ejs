@@ -8,11 +8,16 @@
 </head>
 <body>
     <h1>Lista de Playlist</h1>
+
     <% infos.forEach((playlist) => { %>
-        <a href="/see/about/playlist/<%=playlist.id%>">
-            <h1><%=playlist.name%></h1>
-        </a>
-        
+        <div id="playlist">
+            <a href="/see/about/playlist/<%=playlist.id%>">
+                <h1><%=playlist.name%></h1>
+            </a>
+            <form action="/delete/playlist/<%= playlist.id %>" method="POST" id="formDelete">
+                <button type="submit">Deletar</button>
+            </form>   
+        </div>
     <% } )%>
 
     <form action="/createPlaylist" method="POST">

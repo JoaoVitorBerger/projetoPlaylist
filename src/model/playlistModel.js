@@ -1,20 +1,4 @@
-let playlistList = [
-    {
-        id: "1",
-        name: "Pagode",
-        tags:["Exaltassamba", "Zeca"],
-        musics:[
-            {
-                id:"1",
-                title: "Caviar",
-                year: "2000",
-                album: "Verdades"
-            }
-        ]
-
-    }
-]
-
+let playlistList = []
 const playlistControler = {
     create(name, tags){
         const playlist = {
@@ -38,8 +22,9 @@ const playlistControler = {
        playlistList[findIndexPlaylist] = {...playlistList[findIndexPlaylist], ...playListItem}
     },
     deletePlaylist(idPlaylist){
-        let findIndexPlaylist = playlistList.findIndex(list=>list.id === idPlaylist)
-        playlistList[findIndexPlaylist] = playlistList[findIndexPlaylist].filter(list=>list.id !== idPlaylist)
+        console.log(idPlaylist)
+        playlistList = playlistList.filter(list=>list.id !== idPlaylist)
+        console.log(playlistList)
     },
     updatePlayst(idPlaylist,name,tags){
         let playListItem = playlistList.find(list=>list.id === idPlaylist)
@@ -55,11 +40,7 @@ const playlistControler = {
     getAllPlaylists(){
         return playlistList
     }
-    
-    
-    
 }
-
 const music = {
     create(title, year, artist, album){
         const music={
@@ -72,5 +53,4 @@ const music = {
     return music
     }
 }
-
 module.exports = playlistControler

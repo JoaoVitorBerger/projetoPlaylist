@@ -10,5 +10,6 @@ router.post('/createPlaylist', controler.createPlaylist)
 router.get('/see/about/playlist/:id', controler.seeAboutPlaylist)
 router.get('/add/music/:id', controler.renderMusicForm)
 router.post('/add/music/:id', controler.addMusicInPlaylist)
+router.post('/delete/playlist/:id', controler.deletePlaylist)
 
 module.exports = router
