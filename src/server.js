@@ -6,7 +6,8 @@ const app = express()
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'view'))
-app.use(express.static(__dirname +'public'));
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public/imgs')))
 app.use(express.urlencoded({extended:true}))
 app.use(router)
 

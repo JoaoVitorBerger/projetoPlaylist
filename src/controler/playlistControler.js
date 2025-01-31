@@ -15,15 +15,13 @@ const controler = {
     seeAboutPlaylist(req,res){
         const id = req.params.id
         const data = playlistControler.getPlaylistById(id)
-        console.log(data)
         res.render('about', {data})
     },
     addMusicInPlaylist(req,res){
         const {title,year,artist,album} = req.body
         const id = req.params.id
-        console.log(id)
         playlistControler.insertMusic(id,title,year,artist,album)
-        res.redirect(`/add/music/${id}`)
+        res.redirect(`/see/about/playlist/${id}`)
     },
     renderMusicForm(req,res){
         const id = req.params.id
@@ -31,14 +29,12 @@ const controler = {
     },
     deletePlaylist(req,res){
         const id = req.params.id
-        console.log(id)
         playlistControler.deletePlaylist(id)
         res.redirect('/createPlaylist')
     },
     editPlaylist(req,res){
         const id = req.params.id
         const data = playlistControler.getPlaylistById(id)
-        console.log(data)
         res.render('edit' , {data})
     },
     confirmEditPlaylist(req,res){
@@ -50,7 +46,7 @@ const controler = {
     deleteMusic(req,res){
         const {idPlaylist, idMusic} = req.params
         playlistControler.deleteMusic(idPlaylist, idMusic)
-        res.redirect('/createPlaylist')
+        res.redirect(`/see/about/playlist/${idPlaylist}`)
     },
     renderHome(req,res){
         res.render('home')

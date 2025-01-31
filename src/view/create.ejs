@@ -1,53 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
-<body>
-    <h1>Lista de Playlist</h1>
 
-    <% infos.forEach((playlist) => { %>
-        <div id="playlist">
-            <a href="/see/about/playlist/<%=playlist.id%>">
-                <h1><%=playlist.name%></h1>
-            </a>
-            <form action="/delete/playlist/<%= playlist.id %>" method="POST" id="formDelete">
-                <button type="submit">Deletar</button>
-            </form>   
+<body class="vh-100 vp-100 bg-light">
+    <h1 class="w-100 text-center p-5">Lista de Playlist</h1>
+    <div class="container h-50">
+        <div class="row justify-content-around align-items-start min-h-25">
+            <div class="col-5 shadow p-3">
+                <% infos.forEach((playlist)=> { %>
+                    <div id="playlist" class="d-flex justify-content-center align-items-center">
+                        <a href="/see/about/playlist/<%=playlist.id%>" class="text-decoration-none text-black pe-2">
+                            <h1>
+                                <%=playlist.name%>
+                            </h1>
+                           
+                        </a>
+                        <form action="/delete/playlist/<%= playlist.id %>" method="POST" id="formDelete">
+                            <button type="submit" class="btn btn-primary">Deletar</button>
+                        </form>
+                        
+                    </div>
+                    <% } )%>
+            </div>
+            <div class="col-5  p-3">
+                <form action="/createPlaylist" class="mb-4" method="POST">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="name" placeholder="Informe a nova playlist">
+                        <input type="hidden" name="tags" value="" id="tags">
+                        <button class="input-group-text">Criar</button>
+                    </div>
+
+                </form>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Informe tags para essa playlist" id="tagFather" required>
+                    <button id="adc" class="input-group-text">Adicionar</button>
+                </div>
+                <div class="w-full rounded-4 d-flex justify-content-center p-4 mt-3 ">
+                    <ul id="tagList" class="w-75  mb-1 bg-light list-unstyled">
+
+                    </ul>
+                </div>
+              
+            </div>
         </div>
-    <% } )%>
-
-    <form action="/createPlaylist" method="POST">
-        <input type="text" name="name" placeholder="Informe a nova playlist" >
-        <input type="hidden" name="tags" value="" id="tags">
-        <button>Criar</button>
-    </form>
-    <div>
-        <input type="text" placeholder="Informe tags para essa playlist" id="tagFather">
-        <button id="adc">Adicionar</button>
     </div>
-    <ul id="tagList">
 
-    </ul>
+
+
+
+
 
     <script>
         const inputFather = document.getElementById('tagFather')
         const inputTags = document.getElementById('tags')
         const tagList = document.getElementById('tagList')
         let tagsArray = []
-        document.getElementById('adc').addEventListener('click', ()=>{
+        document.getElementById('adc').addEventListener('click', () => {
             const li = document.createElement('li')
+            li.classList.add('text-center','mb-2','shadow','rounded-4', 'w-auto')
             li.append(inputFather.value)
             tagList.append(li)
             tagsArray.push(inputFather.value)
             inputTags.value = tagsArray
             inputFather.value = ""
         })
-        
+
 
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
